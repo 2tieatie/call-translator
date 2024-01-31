@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Join Room</title>
+    <style>
+        body{
+            font-family: "Arial Black", serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            margin: 0;
+            height: 100vh;
+            font-size: 3vh;
+            background-color: #cde1ff;
+        }
+        .input {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            width: 100%;
+            height: 100%;
+        }
+
+        .forms {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 100%;
+        }
+
+        .form {
+            margin-bottom: 5%;
+            width: 100%;
+            height: 4vh;
+        }
+
+        .input button {
+            font-family: 'Arial Black', serif;
+            font-size: 60%;
+            border: 0;
+            border-radius: 10px;
+            width: 50%;
+            height: 5vh;
+            color: white;
+            background-color: #514fff;
+            box-shadow: 0 0 50px 2px rgba(1, 13, 76, 0.16);
+            transition-duration: .33s;
+        }
+        button:hover {
+            background-color: #7a7afb;
+            box-shadow: 0 0 50px 2px rgb(130, 120, 255);
+        }
+
+        input {
+            font-family: "Arial Black", serif;
+            padding-left: 5%;
+            border-radius: 10px;
+            font-size: 1.5vh;
+            border: 0;
+            width: 80%;
+            margin-left: 7.5%;
+            height: 100%;
+            transition-duration: .33s;
+        }
+        input:focus {
+            background-color: rgba(188, 211, 253, 0.93);
+            box-shadow: 0 0 50px 2px rgba(67, 83, 123, 0.6);
+            outline: 0;
+        }
+
+        .dropdown {
+            position: relative;
+            display: inline-block;
+            width: 150%;
+            margin-left: 13%;
+            height: 1vh;
+        }
+
+        .dropbtn {
+            background-color: rgba(79, 135, 255, 0.87);
+            padding: 10px;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+            height: 1vh;
+
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            font-size: 60%;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+
+        }
+
+        .dropdown-content a {
+            padding: 12px 16px;
+            display: block;
+            width: 87%;
+        }
+
+        .dropdown-content a:hover {
+          background-color: #ddd;
+        }
+
+        .show {
+            display: block;
+            width: 50%;
+        }
+        a {
+            width: 200px;
+        }
+    </style>
+</head>
+<body>
+    <div class="content">
+        <div class="content">
+        <h1 style="margin-bottom: 5%">Join Room</h1>
+        <div class="input">
+            <div class="forms" style="margin-bottom: 5%">
+                <div class="form" style="margin-bottom: 10%;">
+                    <div class="dropdown">
+                        <button onclick="toggleDropdown()" class="dropbtn" id="dropdown-btn" style="background-color: rgba(79, 135, 255, 0.87);">Select Your Language</button>
+                        <div id="dropdown-content" class="dropdown-content"></div>
+                    </div>
+                </div>
+                <div class="form">
+                    <input type="text" id="username" placeholder="Enter your username">
+                </div>
+                <div class="form">
+                    <input type="text" id="roomId" placeholder="Enter room ID">
+                </div>
+            </div>
+            <button id="joinRoom">Join Room</button>
+        </div>
+        </div>
+        <script>
+        let dropdownValues = []
+        fetch('/languages')
+            .then(response => response.json())
+            .then(data => {
+                data.names.forEach( (obj) => {
+                    for (let key in obj) {
+                        if (obj.hasOwnProperty(key)) {
+                            dropdownValues.push(key)
+                            break;
+                        }
+                    }
+                })
+            })
+            .catch(error => {
+                console.error('Error fetching data:', error)
+            });
+        let getUserId = () => {
+            if (!localStorage.getItem('user_id')) {
+                localStorage.setItem('user_id', generateUUID());
+            }
+            return localStorage.getItem('user_id')
+        }
+        let joinRoom = () => {
+            const username = document.getElementById('username').value.trim()
+            const roomId = document.getElementById('roomId').value.trim()
+            const language = document.getElementById('dropdown-btn').textContent.trim()
+            if (username && roomId && dropdownValues.includes(language)) {
+                const userId = getUserId()
+                const url = '/join_room';
+                const data = {
+                    user_id: userId,
+                    username: username,
+                    room_id: roomId,
+                    language: language
+                };
+                fetch(url, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(data)
+                }).then( (response) => {
+                    response.json().then( (result) => {
+                        if (result.status === 'success') {
+                            window.location.href = `/room?id=${roomId}`
+                        } else {
+                            handleException(result.status)
+                        }
+                    })
+                })
+            }
+        }
+
+        document.getElementById('joinRoom').addEventListener('click', joinRoom)
+
+        let handleException = (exception) => {
+            console.log(exception)
+        }
+
+        function generateUUID() {
+            return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+                var r = Math.random() * 16 | 0,
+                    v = c === 'x' ? r : (r & 0x3 | 0x8);
+                return v.toString(16);
+            });
+        }
+
+        function toggleDropdown() {
+            const dropdownContent = document.getElementById('dropdown-content');
+            dropdownContent.classList.toggle('show');
+            if (dropdownContent.classList.contains('show')) {
+                populateDropdownOptions();
+            }
+        }
+        function populateDropdownOptions() {
+            const dropdownContent = document.getElementById('dropdown-content');
+            dropdownContent.innerHTML = '';
+            dropdownValues.forEach(value => {
+                const option = document.createElement('a');
+                option.textContent = value;
+                option.addEventListener('click', () => selectOption(value));
+                dropdownContent.appendChild(option);
+            });
+        }
+        function selectOption(value) {
+            const dropdownBtn = document.getElementById('dropdown-btn');
+            dropdownBtn.textContent = value;
+            document.getElementById('dropdown-content').classList.remove('show');
+        }
+        window.onclick = function(event) {
+            if (!event.target.matches('.dropbtn')) {
+                const dropdownContent = document.getElementById('dropdown-content');
+                if (dropdownContent.classList.contains('show')) {
+                    dropdownContent.classList.remove('show');
+                }
+            }
+        };
+        </script>
+    </div>
+</body>
+</html>

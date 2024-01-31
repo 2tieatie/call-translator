@@ -1,0 +1,263 @@
+{
+    "deepl": [
+        {
+            "cs": {
+                "CS": "Czech"
+            }
+        },
+        {
+            "da": {
+                "DA": "Danish"
+            }
+        },
+        {
+            "de": {
+                "DE": "German"
+            }
+        },
+        {
+            "el": {
+                "EL": "Greek"
+            }
+        },
+        {
+            "en": {
+                "EN": "English"
+            }
+        },
+        {
+            "es": {
+                "ES": "Spanish"
+            }
+        },
+        {
+            "fr": {
+                "FR": "French"
+            }
+        },
+        {
+            "id": {
+                "ID": "Indonesian"
+            }
+        },
+        {
+            "it": {
+                "IT": "Italian"
+            }
+        },
+        {
+            "ko": {
+                "KO": "Korean"
+            }
+        },
+        {
+            "nl": {
+                "NL": "Dutch"
+            }
+        },
+        {
+            "pl": {
+                "PL": "Polish"
+            }
+        },
+        {
+            "pt": {
+                "PT": "Portuguese"
+            }
+        },
+        {
+            "ru": {
+                "RU": "Russian"
+            }
+        },
+        {
+            "sv": {
+                "SV": "Swedish"
+            }
+        },
+        {
+            "tr": {
+                "TR": "Turkish"
+            }
+        },
+        {
+            "uk": {
+                "UK": "Ukrainian"
+            }
+        }
+    ],
+    "deepgram": [
+        {
+            "cs": {
+                "cs": "Czech"
+            }
+        },
+        {
+            "da": {
+                "da": "Danish"
+            }
+        },
+        {
+            "de": {
+                "de": "German"
+            }
+        },
+        {
+            "el": {
+                "el": "Greek"
+            }
+        },
+        {
+            "en": {
+                "en": "English"
+            }
+        },
+        {
+            "es": {
+                "es": "Spanish"
+            }
+        },
+        {
+            "fr": {
+                "fr": "French"
+            }
+        },
+        {
+            "id": {
+                "id": "Indonesian"
+            }
+        },
+        {
+            "it": {
+                "it": "Italian"
+            }
+        },
+        {
+            "ko": {
+                "ko": "Korean"
+            }
+        },
+        {
+            "nl": {
+                "nl": "Dutch"
+            }
+        },
+        {
+            "pl": {
+                "pl": "Polish"
+            }
+        },
+        {
+            "pt": {
+                "pt": "Portuguese"
+            }
+        },
+        {
+            "ru": {
+                "ru": "Russian"
+            }
+        },
+        {
+            "sv": {
+                "sv": "Swedish"
+            }
+        },
+        {
+            "tr": {
+                "tr": "Turkish"
+            }
+        },
+        {
+            "uk": {
+                "uk": "Ukrainian"
+            }
+        }
+    ],
+    "gtts": [
+        {
+            "cs": {
+                "cs": "Czech"
+            }
+        },
+        {
+            "da": {
+                "da": "Danish"
+            }
+        },
+        {
+            "de": {
+                "de": "German"
+            }
+        },
+        {
+            "el": {
+                "el": "Greek"
+            }
+        },
+        {
+            "en": {
+                "en": "English"
+            }
+        },
+        {
+            "es": {
+                "es": "Spanish"
+            }
+        },
+        {
+            "fr": {
+                "fr": "French"
+            }
+        },
+        {
+            "id": {
+                "id": "Indonesian"
+            }
+        },
+        {
+            "it": {
+                "it": "Italian"
+            }
+        },
+        {
+            "ko": {
+                "ko": "Korean"
+            }
+        },
+        {
+            "nl": {
+                "nl": "Dutch"
+            }
+        },
+        {
+            "pl": {
+                "pl": "Polish"
+            }
+        },
+        {
+            "pt": {
+                "pt": "Portuguese"
+            }
+        },
+        {
+            "ru": {
+                "ru": "Russian"
+            }
+        },
+        {
+            "sv": {
+                "sv": "Swedish"
+            }
+        },
+        {
+            "tr": {
+                "tr": "Turkish"
+            }
+        },
+        {
+            "uk": {
+                "uk": "Ukrainian"
+            }
+        }
+    ]
+}

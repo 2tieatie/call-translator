@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+        body{
+            font-family: "Arial Black", serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            margin: 0;
+            height: 90vh;
+            font-size: 3vh;
+            background-color: #cde1ff;
+        }
+        .buttons {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0;
+            width: 100%;
+            height: 50%;
+        }
+        .buttons button{
+            font-family: 'Arial Black', serif;
+            font-size: 60%;
+            border: 0;
+            border-radius: 10px;
+            width: 50%;
+            height: 50%;
+            margin-top: -27%;
+            color: white;
+            background-color: #514fff;
+            box-shadow: 0 0 50px 2px rgba(1, 13, 76, 0.16);
+            transition-duration: .33s;
+        }
+        button:hover {
+            background-color: #7a7afb;
+            box-shadow: 0 0 50px 2px rgb(130, 120, 255);
+        }
+    </style>
+    <title>Home</title>
+</head>
+<body>
+    <div class="content">
+        <h1>Home Page</h1>
+        <div class="buttons">
+            <button class='button' style="
+                margin-right: 5%;
+            " id="createRoom">Create Room</button>
+            <button class='button'  style="
+                " id="joinRoom">Join Room</button>
+        </div>
+
+    </div>
+    <script>
+        let buttons = () => {
+            document.getElementById('createRoom').addEventListener('click', () => {
+                window.location.href = '/create-room'
+            })
+            document.getElementById('joinRoom').addEventListener('click', () => {
+                window.location.href = '/join-room'
+            })
+        }
+        document.addEventListener('DOMContentLoaded', buttons)
+    </script>
+</body>
+</html>
