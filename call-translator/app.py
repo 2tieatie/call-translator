@@ -11,7 +11,8 @@ from utils.translate import Translator
 from uuid import uuid4
 from languages.get_languages import languages, names, get_language
 
-load_dotenv(dotenv_path="config/config.env")
+dotenv_path = os.path.join("config", "config.env")
+load_dotenv(dotenv_path=dotenv_path)
 app = Flask(__name__, static_folder='static', static_url_path='/static')
 app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('SQLALCHEMY_DATABASE_URI')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
