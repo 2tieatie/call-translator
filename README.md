@@ -51,5 +51,5 @@
    ![image](https://github.com/2tieatie/call-translator/assets/103947853/48b5914d-26c1-4d08-8a8d-d66d4f205f39)
 6. **On localhost start meeting in different browsers.**
 
-
+Made with 🐍❤️.
 
